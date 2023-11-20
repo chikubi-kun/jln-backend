@@ -1,3 +1,4 @@
-from .types import Database
+from .database import Database
+from .migration import Migration
 
-__all__ = ["Database"]
+__all__ = ["Database", "Migration"]

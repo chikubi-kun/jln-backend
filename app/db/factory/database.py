@@ -3,7 +3,6 @@ from typing import Any
 
 from sanic import Sanic
 from sqlalchemy import MetaData
-from sqlalchemy.ext.asyncio import AsyncEngine
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.ext.asyncio import async_scoped_session
 from sqlalchemy.ext.asyncio import async_sessionmaker
@@ -37,14 +36,14 @@ class Database:
         self._engine_options = engine_options
         
         if app is not None:
-            self.init_db(app)
+            self.init_app(app)
 
     def __repr__(self) -> str:
         if not self.engine:
             return f"{type(self).__name__}"
         return f"{type(self).__name__} {self.engine.url}"
 
-    def init_db(self, app: Sanic) -> None:
+    def init_app(self, app: Sanic) -> None:
         db_uri: str | None = app.config["DB_URI"]
         db_echo: bool = app.config.get("DB_ECHO", False)
 
