@@ -1,8 +1,9 @@
 version: '3'
 services:
   backend:
-    build: .
-    target: dev
+    build:
+      context: .
+      target: dev
     image: jln-backend:dev
     hostname: webapp
     networks:
