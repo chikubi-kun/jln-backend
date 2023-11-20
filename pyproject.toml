@@ -8,9 +8,17 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+python-dotenv = "^1.0.0"
 sanic = "^23.6.0"
+sanic-ext = "^23.6.0"
 sanic-jwt = "^1.8.0"
 strawberry-graphql = "^0.213.0"
+sqlalchemy = "^2.0.23"
+asyncpg = "^0.29.0"
+alembic = "^1.12.1"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.5.0"
 
 [build-system]
 requires = ["poetry-core"]
