@@ -11,12 +11,5 @@ def init(app: Sanic) -> None:
 
 
 def register_graphql_route(app: Sanic, schema, path, auth=True) -> None:
-    enable = getenv("FLASK_ENV") == "development"
-    skip = enable and getenv("__UNSAFE_SKIP_AUTH__") == "yes"
-
     handler = GraphQLView.as_view(schema=schema, graphql_ide=True)
-
-    if auth and not skip:
-        pass
-
     app.add_route(handler, path)
