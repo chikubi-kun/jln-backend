@@ -1,0 +1,33 @@
+version: '3'
+services:
+  backend:
+    build: .
+    target: dev
+    image: jln-backend:dev
+    hostname: webapp
+    networks:
+      - default
+    ports:
+      - "8080:8000"
+    environment:
+      - SANIC_ENV=development
+    volumes:
+      - $PWD:/webapp
+    command: "sanic app:create_app --factory --dev --host=0.0.0.0"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - postgres
+  
+  postgres:
+    image: "postgres:16"
+    ports:
+      - "5480:5432"
+    environment:
+      - POSTGRES_DB=jln_backend
+      - POSTGRES_PASSWORD=X8vS53VobgdT2IQK
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
