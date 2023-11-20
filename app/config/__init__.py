@@ -23,6 +23,8 @@ class Config:
 
     DB_URI = db_conn_string(DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME)
 
+    DB_MIGRATIONS_DIR = os.path.join(appdir, "db", "migrations")
+
 
 def init(app: Sanic) -> None:
     app.update_config(Config)
